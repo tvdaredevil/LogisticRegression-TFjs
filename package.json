@@ -1,0 +1,21 @@
+{
+  "name": "tusharballz",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc ./index"
+  },
+  "keywords": [
+    "ballz"
+  ],
+  "author": "AP",
+  "license": "ISC",
+  "dependencies": {
+    "@tensorflow/tfjs": "^1.7.4"
+  },
+  "devDependencies": {
+    "ts-node": "^8.10.1",
+    "typescript": "^3.8.3"
+  }
+}
