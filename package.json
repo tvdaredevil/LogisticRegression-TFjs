@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "tsc ./index"
+    "start": "ts-node ./index",
+    "dev": "nodemon --watch *.ts --exec ts-node index.ts"
   },
   "keywords": [
     "ballz"
@@ -12,9 +13,11 @@
   "author": "AP",
   "license": "ISC",
   "dependencies": {
-    "@tensorflow/tfjs": "^1.7.4"
+    "@tensorflow/tfjs": "^1.7.4",
+    "colors": "^1.4.0"
   },
   "devDependencies": {
+    "nodemon": "^2.0.3",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
   }
