@@ -1,5 +1,6 @@
 import * as tf from '@tensorflow/tfjs'
-import {LogisticRegression} from './LogisticRegression'
+import {LogisticRegression, loss, predict} from './LogisticRegression'
+import { Tensor, Scalar } from '@tensorflow/tfjs'
 
 // const strToNumberGrid = v => v.split('|').map(l => l.split('').map(Number))
 const strToNumberGrid = v => tf.tensor(v.replace(/\|/g, '').map(l => l.split('').map(Number)))
@@ -36,8 +37,35 @@ const test_set = [
 ].map(strToNumberGrid)
 
 //= Training Class =======================================|
-const [_x, y] = unzip(train_set)
-const x = tf.tensor(_x as number[])
-const model = new LogisticRegression([x.shape[0], 1])
-model.forward(x as tf.Tensor<tf.Rank.R0>)
+// const [_x, y] = unzip(train_set)
+// const x = tf.tensor(_x as number[]) // Flatten x
+// const model = new LogisticRegression([x.shape[0], 1])
+// const yV = model.forward(x as tf.Tensor<tf.Rank.R0>)
 
+// const cost = loss(yV, y)
+// const prediction = predict(yV, y)
+// console.log('Cost: ', cost)
+// console.log('Acc: ', prediction)
+
+// model.backwards(x as tf.Tensor<tf.Rank.R0>, yV as tf.Tensor<tf.Rank.R0>, y ) 
+// model.optimize()
+
+// Full training class
+
+const costs:number = []
+const lRate = tf.scalar(0.0001)
+const maxIter = 1000
+const fullModel = new LogisticRegression([x.shape[0], 1])
+
+for (let i = 0; i < maxIter; i++){
+    const _x,y = train_set[i]
+    const x = tf.tensor(_x as number[])
+
+    const yV = fullModel.forward(x as tf.Tensor<tf.Rank.R0>)
+    const cost = loss(yV.data, y)
+    const trainAcc = predict(yV, y)
+
+    fullModel.backwards(x,yV,y)
+    fullModel.optimize()
+    
+}
