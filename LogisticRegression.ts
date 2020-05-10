@@ -4,6 +4,9 @@ const {mul, add, sum, div, sub, matMul, log} = tf;
 
 /**
  * From-scratch implementation of the Logistic Regression
+ * @param w Represents the weights
+ * @param b Represents the biases
+ * @param gradients Holds the gradient descent values for weights and biases
  */
 export class LogisticRegression {
     w: tf.Scalar
@@ -18,7 +21,11 @@ export class LogisticRegression {
             db: tf.scalar(0),
         }
     }
-
+    /**
+     * This method is essentially the "predict" function and is
+     * where the model uses its weights to predict an output for a given input
+     * @param x Represents any Tensor Data that needs to be labeled by the model
+     */
     forward(x: tf.Tensor) {
         const z = matMul(this.w.transpose(), x.transpose())
         return tf.sigmoid(z)

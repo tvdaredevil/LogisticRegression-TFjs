@@ -1,5 +1,5 @@
 {
-  "name": "tusharballz",
+  "name": "logreg",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,9 +8,9 @@
     "dev": "nodemon --watch *.ts --exec ts-node index.ts"
   },
   "keywords": [
-    "ballz"
+    "logistic regression"
   ],
-  "author": "AP",
+  "author": "TV",
   "license": "ISC",
   "dependencies": {
     "@tensorflow/tfjs": "^1.7.4",
