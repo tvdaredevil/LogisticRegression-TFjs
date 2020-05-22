@@ -2,6 +2,8 @@
 A from scratch implementation of Logistic Regression in TensorFlowJs. The weights and biases start at 0 originally
 but as training progresses, they will be optimized via gradient descent
 
+In this example, we have a training set of letters that belong to one class or another. After training on those images, we then classify letters as seen in the example below
+
 # To Run
 - Download this code to a folder
 - Open terminal in that folder (ie. `cd` into this folder)
